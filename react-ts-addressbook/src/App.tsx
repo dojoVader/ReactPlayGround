@@ -5,6 +5,7 @@ import ContactList from './modules/ContactList/ContactList';
 import ContactSearch from './modules/ContactSearch/ContactSearch';
 import ContentView from './modules/ContentView/ContentView';
 import ContactAdd from './modules/ContactAdd/ContactAdd';
+import ContactHeader from './modules/ContactHeader/ContactHeader';
 
 class App extends React.Component {
   render() {
@@ -20,14 +21,7 @@ class App extends React.Component {
             
             </div>
             <div className="right-pane col-md-8">
-              <div className="contact-header">
-                <div className="content-header">
-                  <a href="" className="float-left">Edit</a>
-                  <a href="" className="float-right">Close</a>
-                  <div className="kill-float"/>
-                </div>
-
-              </div>
+              <ContactHeader title="Address Book" />
               <div className="contact-info-center col-md-12">
                <ContentView />
               </div>

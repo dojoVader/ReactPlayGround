@@ -1,8 +1,11 @@
+/// <reference path="../../../../node_modules/@types/pubsub-js/index.d.ts" />
+
 import * as React from 'react';
 import { Button } from 'reactstrap';
 import { IContact } from '../../interfaces/ContactEntry';
 import ContactService from '../../ContactList/ContactService';
 import * as PubSub from 'pubsub-js';
+import {CONTACT_ADD} from '../../shared/PubSubEvents';
 export interface AddFormProps{
     firstName: string;
     lastName: string;
@@ -18,8 +21,8 @@ export default class AddForm extends React.Component <FormProps> {
     constructor(props: FormProps){
         super(props);
         this.state = {
-            firstName: 'Okeowo',
-            lastName: 'Aderemi',
+            firstName: '',
+            lastName: '',
             email: ''
         };
     }
@@ -34,8 +37,8 @@ export default class AddForm extends React.Component <FormProps> {
         });
       }
     
-    save() {
-         let formEntry : IContact = {
+    save = () => {
+         let formEntry: IContact = {
              firstName: this.state.firstName,
              company: '',
              email: this.state.email,
@@ -45,11 +48,10 @@ export default class AddForm extends React.Component <FormProps> {
          };
 
          ContactService.add(formEntry);
-         //Raise an event that the list has been updated
-         
-
-         
-    }
+         // Raise an event that the list has been updated
+         PubSub.publish(CONTACT_ADD, formEntry);
+         this.props.close();
+        }
 
     render() {
         return (
@@ -92,8 +94,8 @@ export default class AddForm extends React.Component <FormProps> {
                         placeholder="Email" />
 
                 </div>
-                <Button color="inverse" onClick={ this.save } >Do Something</Button>{' '}
-                        <Button color="secondary" >Cancel</Button>
+                <Button color="inverse" onClick={ this.save } >Add</Button>{' '}
+                        <Button color="secondary" onClick={this.props.close} >Cancel</Button>
             </form>
         );
     }
