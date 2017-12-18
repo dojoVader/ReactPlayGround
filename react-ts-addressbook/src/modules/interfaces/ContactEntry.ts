@@ -12,6 +12,11 @@ export interface IContact {
 
 }
 
-export default interface IContactRepository{
-    contact:IContact
+export interface IContactRepository{
+    group:string,
+    entries:Array<IContact>
+}
+
+export interface IListContactRepository{
+    contacts:Array<IContactRepository>
 }

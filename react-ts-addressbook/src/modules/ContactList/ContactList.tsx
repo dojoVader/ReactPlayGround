@@ -1,82 +1,58 @@
+/// <reference path="./ContactService.ts" />
+
 import * as React from 'react';
+import ContactService from './ContactService';
 const logo = require('../../logo.svg');
+import { IListContactRepository, IContact } from '../interfaces/ContactEntry';
+import { AxiosResponse } from 'axios';
+
 
 
 
 export default class ContactList extends React.Component {
+    state: IListContactRepository;
+    constructor(props: any) {
+        super(props);
+        this.state = {
+            contacts: []
+        }
+}
+    componentWillMount() {
+        ContactService.getContacts().then((response: IContact | AxiosResponse | any) => {
+            this.setState({
+                contacts: response.data
+            })
+        });
+    }
     render() {
-        return        <div>
-        <div className="contact-listing col-md-12 kill-padding">
-            {/* Holds the Contact Lists per Alphabets */}
+        const ItemRender = this.state.contacts.map((item,index)=>
+            <div key={item.group} className="contact-listing col-md-12 kill-padding">
             <div className="contact-letter-group kill-padding col-md-12">
                 <div className="contact-letter-alphabet col-md-12">
-                    A
-          </div>
+                    {item.group}
+                </div>
                 <div className="contact-letter-items col-md-12">
-                    <div className="contact-letter-entity col-md-12">
-                        <img src={logo} className="rounded mx-auto d-block float-left" alt="..." />
-                        <span className="contact-letter-entity-name float-left">
-                            Alexander Alex
-              </span>
-                    </div>
-
-                    <div className="contact-letter-entity col-md-12">
-                        <img src={logo} className="rounded mx-auto d-block float-left" alt="..." />
-                        <span className="contact-letter-entity-name float-left">
-                            Aderemi Okeowo
-          </span>
-                    </div>
-                    <div className="contact-letter-entity col-md-12">
-                        <img src={logo} className="rounded mx-auto d-block float-left" alt="..." />
-                        <span className="contact-letter-entity-name float-left">
-                            Aderemi Okeowo
-          </span>
-                    </div>
-                    <div className="contact-letter-entity col-md-12">
-                        <img src={logo} className="rounded mx-auto d-block float-left" alt="..." />
-                        <span className="contact-letter-entity-name float-left">
-                            Aderemi Okeowo
-          </span>
-                    </div>
+                    { item.entries.map((contact,index)=>
+                         <div key={ contact.email } className="contact-letter-entity col-md-12">
+                         <img src={ logo } className="rounded mx-auto d-block float-left" alt="..." />
+                         <span className="contact-letter-entity-name float-left">
+                             { contact.firstName } { contact.lastName }
+           </span>
+                     </div>
+                    )
+                    }
                 </div>
             </div>
         </div>
-        <div className="contact-listing col-md-12 kill-padding">
-                {/* Holds the Contact Lists per Alphabets */}
-                <div className="contact-letter-group kill-padding col-md-12">
-                  <div className="contact-letter-alphabet col-md-12">
-                    B
-                  </div>
-                  <div className="contact-letter-items col-md-12">
-                    <div className="contact-letter-entity col-md-12">
-                      <img src={logo} className="rounded mx-auto d-block float-left" alt="..." />
-                      <span className="contact-letter-entity-name float-left">
-                        Blexander Alex
-                      </span>
-                    </div>
+        );
+        return <div>
+            {ItemRender}
+        </div>
 
-                    <div className="contact-letter-entity col-md-12">
-                      <img src={logo} className="rounded mx-auto d-block float-left" alt="..." />
-                      <span className="contact-letter-entity-name float-left">
-                        Bderemi Okeowo
-                  </span>
-                    </div>
-                    <div className="contact-letter-entity col-md-12">
-                      <img src={logo} className="rounded mx-auto d-block float-left" alt="..." />
-                      <span className="contact-letter-entity-name float-left">
-                        Bderemi Okeowo
-                  </span>
-                    </div>
-                    <div className="contact-letter-entity col-md-12">
-                      <img src={logo} className="rounded mx-auto d-block float-left" alt="..." />
-                      <span className="contact-letter-entity-name float-left">
-                        Bderemi Okeowo
-                  </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              </div>
+
     }
+
 }
+
+
 
