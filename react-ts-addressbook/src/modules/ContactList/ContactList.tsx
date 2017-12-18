@@ -16,8 +16,9 @@ export default class ContactList extends React.Component {
     }
     componentWillMount() {
         ContactService.getContacts().then((response: IContact | AxiosResponse | any) => {
+            ContactService.setContacts(response.data);
             this.setState({
-                contacts: response.data
+                contacts: ContactService.read()
             });
         });
     }

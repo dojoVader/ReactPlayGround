@@ -4,6 +4,7 @@ import './App.css';
 import ContactList from './modules/ContactList/ContactList';
 import ContactSearch from './modules/ContactSearch/ContactSearch';
 import ContentView from './modules/ContentView/ContentView';
+import ContactAdd from './modules/ContactAdd/ContactAdd';
 
 class App extends React.Component {
   render() {
@@ -12,16 +13,8 @@ class App extends React.Component {
         <div id="contactApplication" className="container">
           <div className="contact-grid row">
             <div className="left-pane col-md-4">
-              <div className="contact-header col-md-12">
-                <div className="content-header">
-                  <span>Contacts</span>
-                  <a href="#" className="float-right">
-                    <span className="ion-android-add" />
-
-                  </a>
-                </div>
-              </div>
-             
+              
+              <ContactAdd />
               <ContactSearch />
               <ContactList />
             
