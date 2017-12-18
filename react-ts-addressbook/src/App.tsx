@@ -5,8 +5,6 @@ import ContactList from './modules/ContactList/ContactList';
 import ContactSearch from './modules/ContactSearch/ContactSearch';
 import ContentView from './modules/ContentView/ContentView';
 
-
-
 class App extends React.Component {
   render() {
     return (
@@ -33,7 +31,7 @@ class App extends React.Component {
                 <div className="content-header">
                   <a href="" className="float-left">Edit</a>
                   <a href="" className="float-right">Close</a>
-                  <div className="kill-float"></div>
+                  <div className="kill-float"/>
                 </div>
 
               </div>
