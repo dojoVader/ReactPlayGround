@@ -5,20 +5,20 @@ import { Button } from 'reactstrap';
 import { IContact } from '../../interfaces/ContactEntry';
 import ContactService from '../../ContactList/ContactService';
 import * as PubSub from 'pubsub-js';
-import {CONTACT_ADD} from '../../shared/PubSubEvents';
-export interface AddFormProps{
+import { CONTACT_ADD } from '../../shared/PubSubEvents';
+export interface AddFormProps {
     firstName: string;
     lastName: string;
     email: string;
 }
 
-export interface FormProps{
+export interface FormProps {
     close: () => void;
 }
-export default class AddForm extends React.Component <FormProps> {
+export default class AddForm extends React.Component<FormProps> {
     state: AddFormProps;
-    
-    constructor(props: FormProps){
+
+    constructor(props: FormProps) {
         super(props);
         this.state = {
             firstName: '',
@@ -31,27 +31,27 @@ export default class AddForm extends React.Component <FormProps> {
         const target = event.target;
         const name = target.name;
         const value = target.value;
-    
-        this.setState({
-          [name]: value
-        });
-      }
-    
-    save = () => {
-         let formEntry: IContact = {
-             firstName: this.state.firstName,
-             company: '',
-             email: this.state.email,
-             lastName: this.state.lastName,
-             phoneNumber: '',
-             website: ''
-         };
 
-         ContactService.add(formEntry);
-         // Raise an event that the list has been updated
-         PubSub.publish(CONTACT_ADD, formEntry);
-         this.props.close();
-        }
+        this.setState({
+            [name]: value
+        });
+    }
+
+    save = () => {
+        let formEntry: IContact = {
+            firstName: this.state.firstName,
+            company: '',
+            email: this.state.email,
+            lastName: this.state.lastName,
+            phoneNumber: '',
+            website: ''
+        };
+
+        ContactService.add(formEntry);
+        // Raise an event that the list has been updated
+        PubSub.publish(CONTACT_ADD, formEntry);
+        this.props.close();
+    }
 
     render() {
         return (
@@ -67,7 +67,7 @@ export default class AddForm extends React.Component <FormProps> {
                         name="firstName"
                         placeholder="First Name"
                         onChange={this.handleInputChange}
-                        />
+                    />
                 </div>
                 <div className="form-group">
                     <input
@@ -94,8 +94,8 @@ export default class AddForm extends React.Component <FormProps> {
                         placeholder="Email" />
 
                 </div>
-                <Button color="inverse" onClick={ this.save } >Add</Button>{' '}
-                        <Button color="secondary" onClick={this.props.close} >Cancel</Button>
+                <Button color="inverse" onClick={this.save} >Add</Button>{' '}
+                <Button color="secondary" onClick={this.props.close} >Cancel</Button>
             </form>
         );
     }

@@ -3,13 +3,13 @@ const logo = require('../../logo.svg');
 import * as PubSub from 'pubsub-js';
 import { CONTACT_VIEW } from '../shared/PubSubEvents';
 import { IContact } from '../interfaces/ContactEntry';
+import EditForm from '../ContactAdd/form/EditForm';
 
 interface IContactViewState {
     contact: IContact;
     editForm: boolean;
 }
 export default class ContactView extends React.Component {
-
     state: IContactViewState;
     constructor(props: any) {
         super(props);
@@ -21,6 +21,7 @@ export default class ContactView extends React.Component {
                 lastName: '',
                 phoneNumber: '',
                 website: ''
+
             },
             editForm: false
         }
@@ -49,21 +50,21 @@ export default class ContactView extends React.Component {
                             <a href="#" onClick={this.editContact} className="float-none btn btn-primary">Edit</a>
                         </div>
                         {!this.state.editForm &&
-                        <div className="contact-details col-md-8">
-                            <h3>{this.state.contact.firstName}</h3>
-                            <br />
-                            <h5>Contact Information</h5>
-                            <hr />
-                            <p>{this.state.contact.phoneNumber}</p>
-                            <p>{this.state.contact.website}</p>
-                            <p>{this.state.contact.email}</p>
-                            <h5>Organization</h5>
-                            <hr />
-                            <p>{this.state.contact.company}</p>
-                        </div>
+                            <div className="contact-details col-md-8">
+                                <h3>{ this.state.contact.firstName  } {this.state.contact.lastName}</h3>
+                                <br />
+                                <h5>Contact Information</h5>
+                                <hr />
+                                <p>{this.state.contact.phoneNumber}</p>
+                                <p>{this.state.contact.website}</p>
+                                <p>{this.state.contact.email}</p>
+                                <h5>Organization</h5>
+                                <hr />
+                                <p>{this.state.contact.company}</p>
+                            </div>
                         }
-                        { this.state.editForm && 
-                          <p>Form to Edit goes Here </p>
+                        {this.state.editForm &&
+                            <EditForm contact={this.state.contact} />
                         }
                     </div>
                 }

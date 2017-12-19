@@ -73,3 +73,6 @@ body {
 .contact-info-center .contact-details p {
   text-align: left;
 }
+.form-edit {
+  padding: 7%;
+}

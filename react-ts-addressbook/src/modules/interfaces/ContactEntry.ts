@@ -9,6 +9,7 @@ export interface IContact {
     website: string;
     company: string;
     email: string;
+ 
 
 }
 
