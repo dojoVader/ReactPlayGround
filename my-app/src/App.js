@@ -2,6 +2,8 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import ButtonToggle from './Button';
+import { ConditionalRendering } from './ConditionalRendering';
+import ShoppingList from './ShoppingList';
 
 
 function App() {
@@ -20,7 +22,10 @@ function App() {
         >
           Learn React
         </a>
+        <ShoppingList />
         <ButtonToggle />
+        <ConditionalRendering age="14" />
+        <ConditionalRendering age="12" />
         
       </header>
     </div>
