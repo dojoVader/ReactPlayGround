@@ -1,0 +1,22 @@
+{
+  "name": "reactplayground",
+  "version": "1.0.0",
+  "description": "This is a repo containing my React Projects , this repo is strictly for learning and building with ReactTS/ReactJS and Redux",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dojoVader/ReactPlayGround.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dojoVader/ReactPlayGround/issues"
+  },
+  "homepage": "https://github.com/dojoVader/ReactPlayGround#readme",
+  "dependencies": {
+    "create-react-app": "^3.4.1"
+  }
+}
