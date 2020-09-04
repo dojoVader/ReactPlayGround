@@ -17,9 +17,9 @@
   version "19.2.3"
   resolved "https://registry.yarnpkg.com/@types/jest/-/jest-19.2.3.tgz#61748040e8589a891dfc2ec1d16a2dd74482980e"
 
-"@types/react-native@^0.43.9":
-  version "0.43.11"
-  resolved "https://registry.yarnpkg.com/@types/react-native/-/react-native-0.43.11.tgz#cc39713dce3c7d147eb447c193c6132362682d25"
+"@types/react-native@^0.44":
+  version "0.44.19"
+  resolved "https://registry.yarnpkg.com/@types/react-native/-/react-native-0.44.19.tgz#e89317e953cfa6594f9c250b74248aa494ccc12f"
   dependencies:
     "@types/react" "*"
 
@@ -2688,8 +2688,8 @@ lodash.map@^4.4.0:
   resolved "https://registry.yarnpkg.com/lodash.map/-/lodash.map-4.6.0.tgz#771ec7839e3473d9c4cde28b19394c3562f4f6d3"
 
 lodash.merge@^4.4.0:
-  version "4.6.0"
-  resolved "https://registry.yarnpkg.com/lodash.merge/-/lodash.merge-4.6.0.tgz#69884ba144ac33fe699737a6086deffadd0f89c5"
+  version "4.6.2"
+  resolved "https://registry.yarnpkg.com/lodash.merge/-/lodash.merge-4.6.2.tgz#558aa53b43b661e1925a0afdfa36a9a1085fe57a"
 
 lodash.pad@^4.1.0:
   version "4.5.1"
